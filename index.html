@@ -3,110 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Login System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            color: #00FFFF; /* Electric Blue */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Keep the navbar fixed */
+            width: 100%; /* Ensure it spans full width */
+            z-index: 900; /* Keep it on top */
+        }
+        button {
+            margin:10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: rgba(0, 123, 255, 0.8);
+            color: white;
+            transform: scale(1.05);
+        }
+        #message {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        #message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .content {
+            margin-top: 0px; /* Add space for the fixed navbar */
+            align-self: center;
+        }
+        .embed-responsive {
+            margin-top: 20px;
+        }
+    </style>
 </head>
-    <script>
-window.embeddedChatbotConfig = {
-chatbotId: "pMj-KYWq-kYjLigI6FeGT",
-domain: "www.chatbase.co"
-}
-</script>
-<script
-src="https://www.chatbase.co/embed.min.js"
-chatbotId="pMj-KYWq-kYjLigI6FeGT"
-domain="www.chatbase.co"
-defer>
-</script>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <section id="home" class="d-flex align-items-center">
-        <div class="container text-light">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="animate__animated animate__fadeInLeft">Welcome to My Portfolio</h1>
-                    <p class="animate__animated animate__fadeInLeft">Here you can find my personal details, education, projects, testimonials, and contact information.</p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <div class="profile-img animate__animated animate__fadeInRight">
-                        <img src="profile.jpg" alt="Profile Image" class="rounded-circle">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<nav>
+    <h1>Portfolio Site of Rokala Krishna</h1>
+    <div id="userNav" style="display: none;">
+        <span id="userName" class="align-item-center"></span>
+        <img id="userPhoto" src="" alt="User Photo" style="display: none;">
+        <button id="signOutButton" class="btn btn-danger">Sign Out</button>
+    </div>
+</nav>
 
-    <section id="education" class="text-light">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeInUp">Education</h2>
-            <!-- Add your education details here -->
-            <p>Testing educations now </p>
-        </div>
-    </section>
+<div class="content">
+    <br><br><br><br><button id="signInButton" class="btn btn-primary">Create Account / Sign In</button>
+    <div id="message" class="mt-4">
+        <p>You have signed in as <span id="userEmail"></span></p>
+    </div>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe id="frame" src="" class="embed-responsive-item" style="display:none;"></iframe>
+    </div>
+</div>
 
-    <section id="projects" class="text-light">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeInUp">Projects</h2>
-            <!-- Add your projects here -->
-            <p>Testing projects now </p>
-        </div>
-    </section>
 
-    <section id="testimonials" class="text-light">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeInUp">Testimonials</h2>
-            <p>Testing testimonials now </p> 
-        </div>
-    </section>
+<script type="module">
+  // Import Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+  // Your web app's Firebase configuration
 
-    <section id="about" class="text-light">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeInUp">About</h2>
-            <!-- Add your about details here -->
-        </div>
-    </section>
+  const firebaseConfig = {
+      apiKey: "AIzaSyB51Zs9LNLCPJ_Tgu8QSZ9c_nXCVEzLQJo",
+      authDomain: "authentication-57fa3.firebaseapp.com",
+      projectId: "authentication-57fa3",
+      storageBucket: "authentication-57fa3.appspot.com",
+      messagingSenderId: "819063426019",
+      appId: "1:819063426019:web:cc65667a408df05f0daed6",
+      measurementId: "G-DX7EQE9PDE"
+    };
 
-    <section id="contact" class="text-light">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeInUp">Contact</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="3" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </section>
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts/main.js"></script>
+  const signInButton = document.getElementById("signInButton");
+  const signOutButton = document.getElementById("signOutButton");
+  const message = document.getElementById("message");
+  const userName = document.getElementById("userName");
+  const userEmail = document.getElementById("userEmail");
+  const userPhoto = document.getElementById("userPhoto");
+  const userNav = document.getElementById("userNav");
+  const frame = document.getElementById("frame");
+  const User = [];
+
+  const toggleMessage = (show) => {
+      if (show) {
+          message.classList.add('show');
+          frame.src = "https://kaisergrid.github.io/MyWebsite/";
+          frame.style.display = "block"; // Show the iframe
+      } else {
+          message.classList.remove('show');
+          frame.style.display = "none"; // Hide the iframe
+          frame.src = ""; // Reset the iframe source
+      }
+  };
+
+  const userSignIn = async () => {
+      signInWithPopup(auth, provider)
+          .then((result) => {
+              console.log(result);
+              User.push(result.user);
+              const user = User[0]; // Get the first user
+              userName.innerHTML = user.displayName;
+              userEmail.innerHTML = user.email;
+              userPhoto.src = user.photoURL;
+              userNav.style.display = 'flex';
+              userPhoto.style.display = 'inline';
+              toggleMessage(true);
+          })
+          .catch((error) => {
+              console.error(error);
+          });
+  };
+
+  const userSignOut = async () => {
+      signOut(auth)
+          .then(() => {
+              alert("Signed out successfully");
+              User.length = 0;
+              userNav.style.display = 'none';
+              toggleMessage(false);
+          })
+          .catch((error) => {
+              console.error(error);
+          });
+  };
+
+  onAuthStateChanged(auth, (user) => {
+      if (user) {
+          signInButton.style.display = "none";
+          userNav.style.display = "flex";
+          toggleMessage(true);
+      } else {
+          signInButton.style.display = "block";
+          userNav.style.display = "none";
+          toggleMessage(false);
+      }
+  });
+
+  signInButton.addEventListener("click", userSignIn);
+  signOutButton.addEventListener("click", userSignOut);
+</script>
+
 </body>
 </html>
